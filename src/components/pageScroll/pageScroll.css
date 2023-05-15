@@ -1,0 +1,52 @@
+.page-scroll {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.scroll {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: .1px;
+  color: var(--black);
+}
+
+.scroll {
+  position: relative;
+  padding: 0 30px;
+  cursor: pointer;
+
+  padding-top: 5px;
+}
+
+.scroll_left::after {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  position: absolute;
+  top: 70%;
+  left: 0;
+  transform: translateY(-50%);
+
+  content: '';
+  background-image: url('/static/left-arrow.svg');
+  background-repeat: no-repeat;
+  color: var(--black);
+}
+
+.scroll_right::before {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  position: absolute;
+  top: 70%;
+  right: 0;
+  transform: translateY(-50%);
+
+  content: '';
+  background-image: url('/static/right-arrow.svg');
+  background-repeat: no-repeat;
+  color: var(--black);
+
+}

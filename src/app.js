@@ -1,12 +1,18 @@
+import { SelectedBookView } from "./views/book/selectedBook"
+import { FavoritesView } from "./views/favorites/favorites"
 import { MainView } from "./views/main/main"
 
 class App {
+
   routes = [
-    {path: '', view: MainView}
+    {path: '', view: MainView},
+    {path: '#favorites', view: FavoritesView},
+    {path: '#selectedBook', view: SelectedBookView},
   ]
   
   appState = {
-    favorites: []
+    favorites: [],
+    selected: []
   }
   
   constructor() {
@@ -14,11 +20,19 @@ class App {
     this.route()
   }
 
+  selectUrl(urlHash){
+    let str = urlHash
+    str = str.match(/selectedBook/gi) ? '#selectedBook' : urlHash
+    return str
+  }
+
   route() {
     if(this.currentView){ 
       this.currentView.destroy()
     }
-    const view = this.routes.find(r => r.path == location.hash).view
+
+    const view = this.routes.find(r => r.path == this.selectUrl(location.hash)).view
+  
     this.currentView = new view(this.appState)
     this.currentView.render()
   }

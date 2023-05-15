@@ -9,22 +9,25 @@ export class Card extends DivComponent {
   }
 
   #addToFavorites() {
-    // console.log('add')
     this.appState.favorites.push(this.cardState)
   }
 
   #deleteFromFavorites() {
     this.appState.favorites = this.appState.favorites.filter(
-      b => b.key != this.cardState.key
+      b => b.key !== this.cardState.key
     )
-    // console.log('delete')
+  }
+
+  #addToSelected() {
+    this.appState.selected.push(this.cardState)
   }
 
   render() {
     this.el.classList.add('card')
     const existInFavourites = this.appState.favorites.find(
-      b => b.key = this.cardState.key)
+      b => b.key == this.cardState.key)
     this.el.innerHTML = `
+    <a href="#selectedBook?${this.cardState.title}">
       <div class="card__image">
         <img src="https://covers.openlibrary.org/b/olid/${this.cardState.cover_edition_key}-M.jpg" />
       </div>
@@ -47,6 +50,7 @@ export class Card extends DivComponent {
           </button>
         </div>
       </div>
+    </a>
     `
     if(existInFavourites){
       this.el
@@ -56,6 +60,8 @@ export class Card extends DivComponent {
       this.el
         .querySelector('.button')
         .addEventListener('click', this.#addToFavorites.bind(this))
+      this.el
+        .addEventListener('click', this.#addToSelected.bind(this))
     }
     return this.el
   }

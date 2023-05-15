@@ -1,8 +1,11 @@
 .card {
   display: flex;
+  width: 250px;
   flex-direction: column;
   border-radius: 8px;
   overflow: hidden;
+
+  cursor: pointer;
 }
 
 .card__image {

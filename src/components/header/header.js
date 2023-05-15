@@ -18,7 +18,7 @@ export class Header extends DivComponent {
           <img src="/static/search-icon.svg" alt="search-icon" />
           Search books
         </a>
-        <a class="nav__item" href="#">
+        <a class="nav__item" href="/#favorites">
           <img src="/static/favorites-icon.svg" alt="favorites-icon"/>
           Favorites
         </a>
